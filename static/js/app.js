@@ -1,4 +1,4 @@
-!(function (s) {
+/**!(function (s) {
   "use strict";
   var e;
   function r() {
@@ -22,11 +22,11 @@
         s("#dark-mode-switch").prop("checked", !1),
         s("#rtl-mode-switch").prop("checked", !1),
         s("#dark-rtl-mode-switch").prop("checked", !1),
-        "static/css/bootstrap.min.css" != s("#bootstrap-style").attr("href") &&
-          s("#bootstrap-style").attr("href", "static/css/bootstrap.min.css"),
+        "assets/css/bootstrap.min.css" != s("#bootstrap-style").attr("href") &&
+          s("#bootstrap-style").attr("href", "assets/css/bootstrap.min.css"),
         s("html").attr("data-bs-theme", "light"),
-        "static/css/app.min.css" != s("#app-style").attr("href") &&
-          s("#app-style").attr("href", "static/css/app.min.css"),
+        "assets/css/app.min.css" != s("#app-style").attr("href") &&
+          s("#app-style").attr("href", "assets/css/app.min.css"),
         sessionStorage.setItem("is_visited", "light-mode-switch"))
       : 1 == s("#dark-mode-switch").prop("checked") && "dark-mode-switch" === e
         ? (s("html").removeAttr("dir"),
@@ -34,24 +34,24 @@
           s("#rtl-mode-switch").prop("checked", !1),
           s("#dark-rtl-mode-switch").prop("checked", !1),
           s("html").attr("data-bs-theme", "dark"),
-          "static/css/bootstrap.min.css" !=
+          "assets/css/bootstrap.min.css" !=
             s("#bootstrap-style").attr("href") &&
-            s("#bootstrap-style").attr("href", "static/css/bootstrap.min.css"),
-          "static/css/app.min.css" != s("#app-style").attr("href") &&
-            s("#app-style").attr("href", "static/css/app.min.css"),
+            s("#bootstrap-style").attr("href", "assets/css/bootstrap.min.css"),
+          "assets/css/app.min.css" != s("#app-style").attr("href") &&
+            s("#app-style").attr("href", "assets/css/app.min.css"),
           sessionStorage.setItem("is_visited", "dark-mode-switch"))
         : 1 == s("#rtl-mode-switch").prop("checked") && "rtl-mode-switch" === e
           ? (s("#light-mode-switch").prop("checked", !1),
             s("#dark-mode-switch").prop("checked", !1),
             s("#dark-rtl-mode-switch").prop("checked", !1),
-            "static/css/bootstrap-rtl.min.css" !=
+            "assets/css/bootstrap-rtl.min.css" !=
               s("#bootstrap-style").attr("href") &&
               s("#bootstrap-style").attr(
                 "href",
-                "static/css/bootstrap-rtl.min.css",
+                "assets/css/bootstrap-rtl.min.css",
               ),
-            "static/css/app-rtl.min.css" != s("#app-style").attr("href") &&
-              s("#app-style").attr("href", "static/css/app-rtl.min.css"),
+            "assets/css/app-rtl.min.css" != s("#app-style").attr("href") &&
+              s("#app-style").attr("href", "assets/css/app-rtl.min.css"),
             s("html").attr("dir", "rtl"),
             s("html").attr("data-bs-theme", "light"),
             sessionStorage.setItem("is_visited", "rtl-mode-switch"))
@@ -60,14 +60,14 @@
             (s("#light-mode-switch").prop("checked", !1),
             s("#rtl-mode-switch").prop("checked", !1),
             s("#dark-mode-switch").prop("checked", !1),
-            "static/css/bootstrap-rtl.min.css" !=
+            "assets/css/bootstrap-rtl.min.css" !=
               s("#bootstrap-style").attr("href") &&
               s("#bootstrap-style").attr(
                 "href",
-                "static/css/bootstrap-rtl.min.css",
+                "assets/css/bootstrap-rtl.min.css",
               ),
-            "static/css/app-rtl.min.css" != s("#app-style").attr("href") &&
-              s("#app-style").attr("href", "static/css/app-rtl.min.css"),
+            "assets/css/app-rtl.min.css" != s("#app-style").attr("href") &&
+              s("#app-style").attr("href", "assets/css/app-rtl.min.css"),
             s("html").attr("dir", "rtl"),
             s("html").attr("data-bs-theme", "dark"),
             sessionStorage.setItem("is_visited", "dark-rtl-mode-switch"));
@@ -244,3 +244,4 @@
         : s("#checkAll").prop("checked", !1);
     }));
 })(jQuery);
+**/
