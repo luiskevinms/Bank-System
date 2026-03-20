@@ -1,4 +1,4 @@
-document.getElementById("btn-signin").addEventListener("click", signin);
+document.getElementById("btn-signin").addEventListener("click", login);
 
 function login(){
     const email = document.getElementById("user-email").value;
