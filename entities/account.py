@@ -14,6 +14,7 @@ class Account():
         self.transactions = transactions
 
     def get_account_by_id(id_user: int):
+        
         try:
             connection = get_connection()
             cursor = connection.cursor(pymysql.cursors.DictCursor)
@@ -32,3 +33,10 @@ class Account():
                 user,
                 transactions
             )
+            cursor.close()
+            connection.close()
+            return account
+
+        except Exception as ex:
+            print("Algo salio mal al conseguir la cuenta", ex)
+    

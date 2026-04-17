@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, session, url_for
+from entities.account import Account
 from entities.user import User
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from dotenv import load_dotenv
 import os
 
@@ -24,7 +25,39 @@ def signup():
 @app.route('/welcome')
 @login_required
 def welcome():
-    return render_template('welcome.html')
+    user_id = session.get('user_id')
+    signin_time = session.get("signin_time")
+
+    if not user_id:
+        return render_template("index.html")
+
+    account = Account.get_account_by_id(user_id)
+
+    if not account:
+        return render_template(
+            "welcome.html",
+            transactions=[],
+            signin_time=signin_time,
+            account=None,
+            balance=0
+        )
+
+    transactions = account.transactions or []
+
+    balance = 0
+    for t in transactions:
+        if t["type"] == 1:
+            balance += float(t["amount"])
+        else:
+            balance -= float(t["amount"])
+
+    return render_template(
+        "welcome.html",
+        transactions=transactions,
+        signin_time=signin_time,
+        account=account,
+        balance=balance
+    )
 
 @app.route('/api/users', methods=["POST"])
 def create_user():
@@ -49,10 +82,14 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
-    user = User.check_login(email, password)
+    user = User.check_login(email=email, password=password)
     if user:
 
         login_user(user)
+        session['signin_time'] = data.get("hora_actual")
+        session['user_id'] = user.id
+        
+        print("Authenticated:", current_user.is_authenticated)
         return jsonify({
             "success": True,
             "message": "Sesión iniciada correctamente"

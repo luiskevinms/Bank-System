@@ -1,171 +1,246 @@
 <!doctype html>
 <html lang="es">
-    <head> 
-        <meta charset="utf-8" />
-        <title>CheemsBank</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="El banco preferido por los mexicanos" name="description" />
-        <meta content="Ceceña" name="author" />
- 
-        <link rel="shortcut icon" href="{{ url_for('static', filename='images/site/favicon.png') }}">
-        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-            <link href="{{ url_for('static', filename='css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-            <link href="{{ url_for('static', filename='css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-            <script src="{{ url_for('static', filename='js/plugin.js') }}"></script>
-        </head>
 
-        <body data-sidebar="dark" data-sidebar-size="small">
+<head>
+    <meta charset="utf-8" />
+    <title>CheemsBank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="El banco preferido por los mexicanos" name="description" />
+    <meta content="Tu nombre" name="author" />
 
-            <div id="layout-wrapper">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/site/favicon.png')}}">
 
-                <header id="page-topbar">
-                    <div class="navbar-header">
-                        <div class="d-flex">
-                            <div class="navbar-brand-box">
-                        
-                                <a href="index.html" class="logo logo-light">
-                                    <span class="logo-sm">
-                                        <img src="{{ url_for('static', filename='images/site/cheems_bank_logo.png') }}" alt="" height="22">
-                                    </span>
-                                    <span class="logo-lg">
-                                        <img src="{{ url_for('static', filename='images/site/cheems_bank_logo.png') }}" alt="" height="70" style="margin-top:10px">
-                                    </span>
-                                </a>
-                            </div>
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
+    <link href="{{url_for('static', filename='css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename='css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+    <script src="{{url_for('static', filename='js/plugin.js')}}"></script>
+</head>
 
-                            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
-                                <i class="fa fa-fw fa-bars"></i>
-                            </button>
-                        </div>
+<body data-sidebar="dark" data-sidebar-size="small">
 
-                        <div class="d-flex">
-                            <div class="dropdown d-inline-block">
-                                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img class="rounded-circle header-profile-user" src="{{ url_for('static', filename='images/users/default.png') }}" alt="Header Avatar">
-                                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{current_user.name}}</span>
-                                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Mi perfil</span></a> 
-                                    <a class="dropdown-item" href="#"><i class="bx bx-key font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Cambiar mi contraseña</span></a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="{{ url_for('logout') }}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Cerrar sesión</span></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-    
-                        </div>
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <div class="navbar-brand-box">
+
+                        <a href="{{url_for('index')}}" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="{{url_for('static', filename='images/site/cheems_bank_logo.png')}}" alt=""
+                                    height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{url_for('static', filename='images/site/cheems_bank_logo.png')}}" alt=""
+                                    height="70" style="margin-top:10px">
+                            </span>
+                        </a>
                     </div>
-                </header>
 
-                <div class="vertical-menu">
-                    <div data-simplebar class="h-100">
-                        <div id="sidebar-menu">
-                            <ul class="metismenu list-unstyled" id="side-menu">
-                                <li class="menu-title" key="t-menu">Categoría 1</li>
-                                <li>
-                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                        <i class="bx bx-home-circle"></i>
-                                        <span key="t-dashboards">Inicio</span>
-                                    </a>
-                                    <ul class="sub-menu" aria-expanded="false">
-                                        <li><a href="#" key="t-default">Opción 1</a></li>
-                                        <li><a href="#" key="t-saas">Opción 2</a></li>
-                                        <li><a href="#" key="t-crypto">Opción 3</a></li>
-                                    </ul>
-                                </li>
+                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                        id="vertical-menu-btn">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+                </div>
 
-                                <li class="menu-title" key="t-apps">Categoría 2</li>
-
-                                <li>
-                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                        <i class="bx bx-calendar"></i>
-                                        <span key="t-dashboards">Menú 1</span>
-                                    </a>
-                                    <ul class="sub-menu" aria-expanded="false">
-                                        <li><a href="#" key="t-tui-calendar">Opción 1</a></li>
-                                        <li><a href="#" key="t-full-calendar">Opción 2</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="waves-effect">
-                                        <i class="bx bx-chat"></i>
-                                        <span key="t-chat">Menú 2</span>
-                                    </a>
-                                </li>
-                            </ul>
+                <div class="d-flex">
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user"
+                                src="{{url_for('static', filename='images/users/default.png')}}" alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{current_user.name}}</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i>
+                                <span key="t-profile">Mi perfil</span></a>
+                            <a class="dropdown-item" href="#"><i class="bx bx-key font-size-16 align-middle me-1"></i>
+                                <span key="t-lock-screen">Cambiar mi contraseña</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i
+                                    class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
+                                    key="t-logout">Cerrar sesión</span></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="main-content">
-
-                    <div class="page-content">
-                        <div class="container-fluid">
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                        <h4 class="mb-sm-0 font-size-18">Página en blanco</h4>
-
-                                        <div class="page-title-right">
-                                            <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
-                                                <li class="breadcrumb-item active">Página en blanco</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-    
-                    <div class="modal fade transaction-detailModal" tabindex="-1" role="dialog" aria-labelledby="transaction-detailModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="transaction-detailModalLabel">Título de modal</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    
-                    <footer class="footer">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <script>document.write(new Date().getFullYear())</script> CheemsBank - Servicios Financieros Globales
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="text-sm-end d-none d-sm-block">
-                                        Desarrollado por [tu nombre]
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
 
             </div>
+    </div>
+    </header>
+
+    <div class="vertical-menu">
+        <div data-simplebar class="h-100">
+            <div id="sidebar-menu">
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title" key="t-menu">Categoría 1</li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-home-circle"></i>
+                            <span key="t-dashboards">Inicio</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="#" key="t-default">Opción 1</a></li>
+                            <li><a href="#" key="t-saas">Opción 2</a></li>
+                            <li><a href="#" key="t-crypto">Opción 3</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title" key="t-apps">Categoría 2</li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-calendar"></i>
+                            <span key="t-dashboards">Menú 1</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="#" key="t-tui-calendar">Opción 1</a></li>
+                            <li><a href="#" key="t-full-calendar">Opción 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect">
+                            <i class="bx bx-chat"></i>
+                            <span key="t-chat">Menú 2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">MOVIMIENTOS DE CUENTA</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item active">Movimientos de cuenta</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-primary">Bienvenido</h5>
+                                <small>Panel principal</small>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="{{ url_for('static', filename='images/users/default.png') }}"
+                                    class="rounded-circle mb-3" width="80" height="80" alt="Usuario">
+                                <h5 class="mb-1">{{ current_user.name }}</h5>
+                                <p class="text-muted mb-0">
+                                    Cuenta {{ account.number if account else 'Sin cuenta' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="mb-3">Balance actual</h5>
+                                <h2 class="mb-1">${{ "{:,.2f}".format(balance) }}</h2>
+                                <p class="text-muted mb-0">MXN</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="mb-4">Últimos movimientos</h5>
+
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Descripción</th>
+                                                <th>Monto</th>
+                                                <th>Tipo</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            {% if transactions %}
+                                            {% for t in transactions %}
+                                            <tr
+                                                class="{% if t.type == 1 %}table-success{% else %}table-danger{% endif %}">
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.description }}</td>
+                                                <td>
+                                                    {% if t.type == 1 %}
+                                                    ${{ "{:,.2f}".format(t.amount) }}
+                                                    {% else %}
+                                                    -${{ "{:,.2f}".format(t.amount) }}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if t.type == 1 %}
+                                                    <span class="badge bg-success">Ingreso</span>
+                                                    {% else %}
+                                                    <span class="badge bg-danger">Egreso</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% else %}
+                                            <tr>
+                                                <td colspan="4" class="text-center text-muted">
+                                                    No hay movimientos registrados
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script> CheemsBank - Servicios Financieros
+                    Globales
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Desarrollado por [tu nombre]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    </div>
 
 
-            <div class="rightbar-overlay"></div>
+    <div class="rightbar-overlay"></div>
 
     <script src="{{ url_for('static', filename='libs/jquery/jquery.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='libs/metismenu/metisMenu.min.js') }} "></script>
-            <script src="{{ url_for('static', filename='libs/simplebar/simplebar.min.js') }} "></script>
-            <script src="{{ url_for('static', filename='libs/node-waves/waves.min.js') }} "></script>
+    <script src="{{ url_for('static', filename='libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='libs/metismenu/metisMenu.min.js') }} "></script>
+    <script src="{{ url_for('static', filename='libs/simplebar/simplebar.min.js') }} "></script>
+    <script src="{{ url_for('static', filename='libs/node-waves/waves.min.js') }} "></script>
 
-            <script src="{{ url_for('static', filename='js/app.js') }} "></script>
-        </body>
+    <script src="{{ url_for('static', filename='js/app.js') }} "></script>
+</body>
+
 </html>
