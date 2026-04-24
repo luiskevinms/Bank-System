@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, jsonify, redirect, session, url_for
 from entities.account import Account
+from entities.log import Log
 from entities.user import User
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from dotenv import load_dotenv
 import os
+
+from enums.log_type import LogType
 
 load_dotenv()
 
@@ -86,6 +89,11 @@ def login():
     if user:
 
         login_user(user)
+
+
+        #invocar al método para guardar el log de inicio de sesión
+        Log.save_log(user, "Inicio de sesión", LogType.LOGIN)
+
         session['signin_time'] = data.get("hora_actual")
         session['user_id'] = user.id
         

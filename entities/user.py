@@ -1,14 +1,19 @@
 from persistence.db import get_connection
 from werkzeug.security import generate_password_hash, check_password_hash
 import pymysql
+from enums.profile import Profile
 from flask_login import UserMixin
 
 class User (UserMixin):
-    def __init__(self, id: int, name:str, email:str, password:str):
+    def __init__(self, id: int, name:str, email:str, password:str, profile: Profile, permissions: list,
+                 is_active:bool):
         self.id= id
         self.name = name
         self.email = email
         self.password = password
+        self.profile = profile
+        self.permissions = permissions
+        self.is_active = is_active
     
     def check_email_exists(email) -> bool:
         """
